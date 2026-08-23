@@ -1,0 +1,53 @@
+
+/*Globally*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*Any type of body element (texts)*/
+body {
+    /*background: radial-gradient(#002e59, #161b22);*/
+    background: linear-gradient(to bottom,#002e59, #161b22);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e6edf3;
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+}
+
+/*For links*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Subtle 8-bit background grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.12;
+
+    background-image:
+            radial-gradient(
+                    circle,
+                    #58a6ff 2px,
+                    transparent 2px
+            );
+
+    background-size: 32px 32px;
+
+    mask-image: radial-gradient(
+            ellipse at center,
+            transparent 15%,
+            black 45%,
+            transparent 90%
+    );
+}
+
+
+
+

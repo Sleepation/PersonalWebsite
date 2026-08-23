@@ -1,0 +1,305 @@
+/*  */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /*background: radial-gradient(#002e59, #161b22);*/
+    background: linear-gradient(to bottom,#002e59, #161b22);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e6edf3;
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Subtle 8-bit background grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.12;
+
+    background-image:
+            linear-gradient(
+                    to bottom,
+                    #03fcfc 5px,
+                    transparent 5px
+            ),
+            linear-gradient(
+                    90deg,
+                    #03fcfc 5px,
+                    transparent 5px
+            );
+
+    background-size: 32px 32px;
+
+    mask-image: linear-gradient(
+            to bottom,
+            transparent 15%,
+            black 45%,
+            transparent 90%
+    );
+}
+
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+.container {
+    width: min(1100px, 90%);
+    margin: 40px auto;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+    border: 2px solid #30363d;
+    padding: 30px;
+    background: #161b22;
+
+    box-shadow:
+            6px 6px 0 #080b0f;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: #58a6ff;
+}
+
+.header p {
+    margin-top: 8px;
+    color: #8b949e;
+}
+
+
+/* =========================
+   MENU
+   ========================= */
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 20px;
+    padding: 10px;
+
+    border: 2px solid #30363d;
+    background: #161b22;
+}
+
+.menu-tab {
+    padding: 10px 18px;
+
+    border: 2px solid #30363d;
+    background: #0d1117;
+
+    color: #8b949e;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-weight: bold;
+
+    transition: 0.15s;
+}
+
+.menu-tab:hover {
+    color: #58a6ff;
+    border-color: #58a6ff;
+}
+
+.menu-tab.active {
+    color: #0d1117;
+    background: #58a6ff;
+    border-color: #58a6ff;
+}
+
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+.section {
+    display: none;
+
+    margin-top: 20px;
+    padding: 30px;
+
+    border: 2px solid #30363d;
+    background: #161b22;
+
+    box-shadow:
+            6px 6px 0 #080b0f;
+}
+
+.section.active {
+    display: block;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+
+    color: #58a6ff;
+    font-size: 1.5rem;
+
+    border-bottom: 2px dashed #30363d;
+    padding-bottom: 10px;
+}
+
+
+/* =========================
+   ABOUT
+   ========================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 25px;
+    align-items: center;
+}
+
+.pixel-avatar {
+    width: 150px;
+    height: 150px;
+
+    border: 4px solid #58a6ff;
+    background: #0d1117;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #58a6ff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+/* =========================
+   SKILLS
+   ========================= */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    border: 2px solid #30363d;
+    padding: 8px 14px;
+    background: #0d1117;
+
+    color: #c9d1d9;
+}
+
+.skill:hover {
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+
+
+/* =========================
+   PROJECTS
+   ========================= */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    padding: 20px;
+
+    border: 2px solid #30363d;
+    background: #0d1117;
+
+    box-shadow: 4px 4px 0 #080b0f;
+}
+
+.project:hover {
+    border-color: #58a6ff;
+    transform: translate(-2px, -2px);
+}
+
+.project h3 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+
+.project p {
+    color: #8b949e;
+}
+
+
+/* =========================
+   EXPERIENCE
+   ========================= */
+
+.experience {
+    border-left: 4px solid #58a6ff;
+    padding-left: 20px;
+}
+
+.experience-item {
+    margin-bottom: 25px;
+}
+
+.experience-item h3 {
+    color: #58a6ff;
+}
+
+.experience-item .date {
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+
+/* =========================
+   CONTACT
+   ========================= */
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin: 12px 0;
+}
+
+.contact-list a {
+    color: #58a6ff;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    margin-top: 25px;
+    text-align: center;
+
+    color: #484f58;
+    font-size: 0.8rem;
+}
