@@ -20,6 +20,16 @@ a {
     text-decoration: none;
 }
 
+#c {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+}
+
 /* Subtle 8-bit background grid */
 body::before {
     content: "";
@@ -32,20 +42,19 @@ body::before {
     background-image:
             linear-gradient(
                     to bottom,
-                    #161b22 6px,
-                    transparent 2px
+                    #161b22 0 6px,
+                    transparent 6px
             ),
             linear-gradient(
-                    90deg,
-                    #161b22 6px,
-                    transparent 2px
+                    to right,
+                    #161b22 0 6px,
+                    transparent 6px
             );
 
     background-size: 32px 32px;
 
     mask-image: linear-gradient(
             to top,
-            transparent 0%,
             black 0%,
             transparent 90%
     );
