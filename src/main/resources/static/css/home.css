@@ -1,21 +1,38 @@
-/*  */
+
+/* Variables set at the start */
+:root{
+    --white: #e6edf3;
+    --lightgrey: #8b949e;
+    --grey: #30363d;
+    --darkgrey: #161b22;
+    --black: #080b0f;
+    --blue: #58a6ff;
+    --menudarkgrey: #0d1117;
+
+}
+
+
+/* * refers to everything (default settings) */
 * {
     box-sizing: border-box; /* Counts the padding in the coordinates/size */
     margin: 0; /* Space between the border and the neighbouring elements */
     padding: 0; /* Space between the content and the border */
 }
 
+/* body refers to any body element */
 body {
-    color: #e6edf3; /* Text color/body element color */
+    color: var(--white); /* Text color/body element color */
     font-family: "Courier New", monospace;
     line-height: 1.6;
 }
 
+/* a refers to links */
 a {
     color: inherit;
     text-decoration: none;
 }
 
+/* Canvas id */
 #c {
     position: fixed;
     top: 0;
@@ -23,15 +40,15 @@ a {
     width: 100%;
     height: 100%;
     z-index: -2;
-    display: block;
+    display: block; /* Taking the whole line space */
 }
 
-/* TO CHANGE TO GLSL
+/* TO CHANGE TO GLSL */
 
 /* Using body::before for a different layer */
 body::before {
     content: "";
-    position: fixed;
+    position: fixed; /* Does not change position relative to scrolling */
     inset: 0;
     pointer-events: none; /* Avoid having elements juxtaposed with events by default */
     opacity: 0.5;
@@ -60,112 +77,118 @@ body::before {
 }
 
 
-/* =========================
-   MAIN CONTAINER
-   ========================= */
+/* Containers in general */
 
 .container {
     width: min(1100px, 90%); /* For different display size */
-    margin: 40px auto; /* Spacing between containers
+    margin: 40px auto; /* Spacing between containers */
 }
 
 
-/* =========================
-   HEADER
-   ========================= */
+/* Headers in general (No need for inherit in font because it is part of body) */
 
 .header {
-    border: 2px solid #30363d; /* Border information */
+    border: 2px solid var(--grey); /* Border information (size, color type (solid basically not transparent), color) */
     padding: 30px;
-    background: #161b22;
+    background: var(--darkgrey);
 
-    box-shadow: 6px 6px 0 #080b0f; /* Creates a small shadow behind the box */
+    box-shadow: 6px 6px 0 var(--black); /* Creates a small shadow behind the box (0 for no blur radius) */
 }
 
+
+/* Header subcategories */
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* rem is used for font-size for better readability if text font changes size by the user. Pixels would enforce the same size and would not allow for user modifications */
     letter-spacing: 3px; /* Spacing between letters */
-    color: #58a6ff; /* Text color */
+    color: var(--blue); /* Text color */
 }
 
 .header p {
-    margin-top: 8px; /* Only from the top */
-    color: #8b949e; /* Text color */
+    margin-top: 8px;
+    color: var(--lightgrey); /* Text color */
 }
 
 
-/* =========================
-   MENU
-   ========================= */
+/* Menu (navigator type) (no auto inherit) */
 
+/* Container for all menus */
 .menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+
+    /* How it displays depending on the viewport size */
+
+    display: flex; /* for better 1D display */
+    flex-wrap: wrap; /* wraps the element if it takes too much space */
+    gap: 8px; /* Gap between menu elements
+
+    /* Initial view */
 
     margin-top: 20px;
     padding: 10px;
 
-    border: 2px solid #30363d;
-    background: #161b22;
+    border: 2px solid var(--grey);
+    background: var(--darkgrey);
+    box-shadow: 6px 6px 0 var(--black);
 }
 
+/* Menu tab */
 .menu-tab {
-    padding: 10px 18px;
+    padding: 10px 18px; /* Top Right only */
 
-    border: 2px solid #30363d;
-    background: #0d1117;
+    border: 2px solid var(--grey);
+    background: var(--menudarkgrey);
 
-    color: #8b949e;
+    color: var(--lightgrey);
 
-    cursor: pointer;
+    cursor: pointer; /* Cursor type when hovering over it */
 
-    font-family: inherit;
+    font-family: inherit; /* Inherits from body */
     font-weight: bold;
 
-    transition: 0.15s;
+    transition: 0.15s; /* Time for change in events (hover and active) */
 }
 
+
+/* Menu tab hover change */
 .menu-tab:hover {
-    color: #58a6ff;
-    border-color: #58a6ff;
+    color: var(--blue);
+    border-color: var(--blue);
 }
 
+
+/* Selected Menu Tab change */
 .menu-tab.active {
-    color: #0d1117;
-    background: #58a6ff;
-    border-color: #58a6ff;
+    color: var(--menudarkgrey);
+    background: var(--blue);
+    border-color: var(--blue);
 }
 
 
-/* =========================
-   SECTIONS
-   ========================= */
+/* Sections (responsible for separation of menus) */
 
 .section {
-    display: none;
+    display: none; /* Set original display to off to not show */
 
-    margin-top: 20px;
+    margin-top: 20px; /* Spacing to menu */
     padding: 30px;
 
-    border: 2px solid #30363d;
-    background: #161b22;
+    border: 2px solid var(--grey);
+    background: var(--darkgrey);
 
     box-shadow:
-            6px 6px 0 #080b0f;
+            6px 6px 0 var(--black);
 }
 
 .section.active {
-    display: block;
+    display: block; /* Sets the display visible */
 }
 
 .section h2 {
     margin-bottom: 20px;
 
-    color: #58a6ff;
+    color: var(--blue);
     font-size: 1.5rem;
 
-    border-bottom: 2px dashed #30363d;
+    border-bottom: 2px dashed var(--grey);
     padding-bottom: 10px;
 }
 
@@ -185,14 +208,14 @@ body::before {
     width: 150px;
     height: 150px;
 
-    border: 4px solid #58a6ff;
-    background: #0d1117;
+    border: 4px solid var(--blue);
+    background: #0d1117; /*TO SAVE AS VARIABLE */
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #58a6ff;
+    color: var(--blue);
     font-size: 2rem;
     font-weight: bold;
 }
@@ -209,16 +232,16 @@ body::before {
 }
 
 .skill {
-    border: 2px solid #30363d;
+    border: 2px solid var(--grey);
     padding: 8px 14px;
-    background: #0d1117;
+    background: #0d1117; /*TO SAVE AS VARIABLE */
 
-    color: #c9d1d9;
+    color: var(--white);
 }
 
 .skill:hover {
-    border-color: #58a6ff;
-    color: #58a6ff;
+    border-color: var(--blue);
+    color: var(--blue);
 }
 
 
@@ -235,24 +258,24 @@ body::before {
 .project {
     padding: 20px;
 
-    border: 2px solid #30363d;
+    border: 2px solid var(--grey);
     background: #0d1117;
 
-    box-shadow: 4px 4px 0 #080b0f;
+    box-shadow: 4px 4px 0 var(--black);
 }
 
 .project:hover {
-    border-color: #58a6ff;
+    border-color: var(--blue);
     transform: translate(-2px, -2px);
 }
 
 .project h3 {
-    color: #58a6ff;
+    color: var(--blue);
     margin-bottom: 10px;
 }
 
 .project p {
-    color: #8b949e;
+    color: var(--lightgrey);
 }
 
 
@@ -261,7 +284,7 @@ body::before {
    ========================= */
 
 .experience {
-    border-left: 4px solid #58a6ff;
+    border-left: 4px solid var(--blue);
     padding-left: 20px;
 }
 
@@ -270,11 +293,11 @@ body::before {
 }
 
 .experience-item h3 {
-    color: #58a6ff;
+    color: var(--blue);
 }
 
 .experience-item .date {
-    color: #8b949e;
+    color: var(--lightgrey);
     font-size: 0.9rem;
 }
 
@@ -292,7 +315,7 @@ body::before {
 }
 
 .contact-list a {
-    color: #58a6ff;
+    color: var(--blue);
 }
 
 .contact-list a:hover {
@@ -308,6 +331,6 @@ footer {
     margin-top: 25px;
     text-align: center;
 
-    color: #484f58;
+    color: #484f58; /*TO SAVE AS VARIABLE */
     font-size: 0.8rem;
 }
