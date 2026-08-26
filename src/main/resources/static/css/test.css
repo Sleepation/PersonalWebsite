@@ -1,26 +1,30 @@
 
 /*Globally*/
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box; /* Counts the padding in the coordinates*/
+    margin: 0; /* Space between the border and the neighbouring elements */
+    padding: 0; /* Space between the content and the border */
 }
 
 /*Any type of body element (texts)*/
 body {
-    /*background: radial-gradient(#002e59, #161b22);*/
-    background: linear-gradient(to bottom,#002e59, #161b22);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #e6edf3;
-    font-family: "Courier New", monospace;
-    line-height: 1.6;
+    /* background already covered by glsl */
+    color: #e6edf3; /* Text color */
+    font-family: "Courier New", monospace; /* Same horizontal space per letter */
+    line-height: 1.6; /* Line height between lines of text */
 }
 
 /*For links*/
 a {
     color: inherit;
     text-decoration: none;
+}
+
+#c{
+    position: fixed;
+    top: 0;
+    left: 0;
+
 }
 
 /* Subtle 8-bit background grid */

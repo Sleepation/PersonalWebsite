@@ -1,16 +1,12 @@
 /*  */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box; /* Counts the padding in the coordinates/size */
+    margin: 0; /* Space between the border and the neighbouring elements */
+    padding: 0; /* Space between the content and the border */
 }
 
 body {
-    /*background: radial-gradient(#002e59, #161b22);*/
-    background: linear-gradient(to bottom,#002e59, #02b5b5);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #e6edf3;
+    color: #e6edf3; /* Text color/body element color */
     font-family: "Courier New", monospace;
     line-height: 1.6;
 }
@@ -30,33 +26,36 @@ a {
     display: block;
 }
 
-/* Subtle 8-bit background grid */
+/* TO CHANGE TO GLSL
+
+/* Using body::before for a different layer */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    pointer-events: none;
+    pointer-events: none; /* Avoid having elements juxtaposed with events by default */
     opacity: 0.5;
-    z-index: -1;
+    z-index: -1; /* Puts it in the back */
 
+    /* background lines */
     background-image:
             linear-gradient(
                     to bottom,
-                    #161b22 0 6px,
-                    transparent 6px
+                    #161b22 15px,
+                    transparent 17px /*15 to 17 is the transition, then 17 to 32 is transparent */
             ),
             linear-gradient(
                     to right,
-                    #161b22 0 6px,
-                    transparent 6px
+                    #161b22 15px,
+                    transparent 17px
             );
 
-    background-size: 32px 32px;
+    background-size: 32px 32px; /* Background tile size (crucial for creating the lines) */
 
     mask-image: linear-gradient(
             to top,
             black 0%,
-            transparent 90%
+            transparent 100% /* Masks the lines at the top */
     );
 }
 
@@ -66,8 +65,8 @@ body::before {
    ========================= */
 
 .container {
-    width: min(1100px, 90%);
-    margin: 40px auto;
+    width: min(1100px, 90%); /* For different display size */
+    margin: 40px auto; /* Spacing between containers
 }
 
 
@@ -76,23 +75,22 @@ body::before {
    ========================= */
 
 .header {
-    border: 2px solid #30363d;
+    border: 2px solid #30363d; /* Border information */
     padding: 30px;
     background: #161b22;
 
-    box-shadow:
-            6px 6px 0 #080b0f;
+    box-shadow: 6px 6px 0 #080b0f; /* Creates a small shadow behind the box */
 }
 
 .header h1 {
     font-size: 2.5rem;
-    letter-spacing: 3px;
-    color: #58a6ff;
+    letter-spacing: 3px; /* Spacing between letters */
+    color: #58a6ff; /* Text color */
 }
 
 .header p {
-    margin-top: 8px;
-    color: #8b949e;
+    margin-top: 8px; /* Only from the top */
+    color: #8b949e; /* Text color */
 }
 
 
