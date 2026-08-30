@@ -34,23 +34,23 @@
 
     <nav class="menu">
 
-        <button class="menu-tab active" onclick="showSection('about', this)">
+        <button class="menu-tab active" onclick="showSection('section', 'about', this)">
             ABOUT
         </button>
 
-        <button class="menu-tab" onclick="showSection('skills', this)">
+        <button class="menu-tab" onclick="showSection('section','skills', this)">
             SKILLS
         </button>
 
-        <button class="menu-tab" onclick="showSection('projects', this)">
+        <button class="menu-tab" onclick="showSection('section', 'projects', this)">
             PROJECTS
         </button>
 
-        <button class="menu-tab" onclick="showSection('experience', this)">
+        <button class="menu-tab" onclick="showSection('section', 'experience', this)">
             EXPERIENCE
         </button>
 
-        <button class="menu-tab" onclick="showSection('contact', this)">
+        <button class="menu-tab" onclick="showSection('section', 'contact', this)">
             CONTACT
         </button>
 
@@ -99,22 +99,40 @@
 
         <h2>// SKILLS</h2>
 
-        <div class="skills">
+        <nav class="skills">
 
-            <span class="skill">Java</span>
-            <span class="skill">Python</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">HTML</span>
-            <span class="skill">CSS</span>
-            <span class="skill">Spring Boot</span>
-            <span class="skill">Thymeleaf</span>
-            <span class="skill">PostgreSQL</span>
-            <span class="skill">Supabase</span>
-            <span class="skill">Git</span>
-            <span class="skill">GitHub</span>
-            <span class="skill">Maven</span>
+            <button class="skill" onclick="showSection('skill-box','java', this)">Java</button>
+            <button class="skill">Python</button>
+            <button class="skill">JavaScript</button>
+            <button class="skill">HTML</button>
+            <button class="skill">CSS</button>
+            <button class="skill">Spring Boot</button>
+            <button class="skill">Thymeleaf</button>
+            <button class="skill">PostgreSQL</button>
+            <button class="skill">Supabase</button>
+            <button class="skill">Git</button>
+            <button class="skill">GitHub</button>
+            <button class="skill">Maven</button>
 
-        </div>
+        </nav>
+
+        <section id="java" class="skill-box">
+
+            <div>
+                <h2>JAVA</h2>
+                <p>
+                    Testing for java. If this appears, it works.
+                </p>
+
+            </div>
+
+            <div>
+                <img src="/img/img.png" alt="Not loaded">
+            </div>
+
+        </section>
+
+
 
     </section>
 
@@ -264,75 +282,8 @@
 
 <canvas id="c"></canvas>
 
+<script src="/js/menu.js"></script>
+
 <script src="/js/webGLTest.js"></script>
 
-<script id="vertex-shader-2d" type="notjs">
-    // To make it uniform
-    precision mediump float;
-
-    // an attribute will receive data from a buffer
-    attribute vec2 a_position;
-
-    uniform vec2 u_resolution;
-
-    // all shaders have a main function
-    void main() {
-
-      // gl_Position is a special variable a vertex shader
-      // is responsible for setting
-
-      vec2 zeroToOne = a_position/u_resolution;
-
-      vec2 zeroToTwo = zeroToOne * 2.0;
-
-      vec2 clipSpace = zeroToTwo - 1.0;
-
-      gl_Position = vec4(clipSpace, 0.0, 1.0);
-    }
-
-</script>
-
-<script id="fragment-shader-2d" type="notjs">
-
-    // fragment shaders don't have a default precision so we need
-    // to pick one. mediump is a good default
-    precision mediump float;
-
-    uniform float u_time;
-
-    uniform vec2 u_resolution;
-
-    void main() {
-      // gl_FragColor is a special variable a fragment shader
-      // is responsible for setting
-
-
-      //Sin is from -1 to 1
-
-      float red = (sin(u_time * 2.0) + 1.0) * 0.5;
-      float blue = (cos(u_time * 2.0) + 1.0) * 0.5;
-      float green = (sin(u_time * 4.0) + 1.0) * 0.5;
-
-      // vec3 topColor = vec3 (red, blue, green);
-
-      vec3 topColor = vec3 (0.0, 0.180, 0.349);
-
-      vec3 bottomColor = vec3(0.008, 0.710, 0.810);
-
-      float normalized_x = gl_FragCoord.x/u_resolution.x;
-
-      float wave = sin(normalized_x * 3.14 + u_time * 3.0) * 0.2 - 0.5;
-
-      float normalized_y = gl_FragCoord.y/u_resolution.y;
-
-      float gradient = (normalized_y - wave);
-
-      // float x_sin = sin(normalized_y);
-
-      vec3 color = mix(bottomColor, topColor, gradient);
-
-      gl_FragColor = vec4(color, 1.0);
-    }
-
-</script>
 </html>

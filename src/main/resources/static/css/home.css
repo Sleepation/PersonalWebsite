@@ -5,10 +5,9 @@
     --lightgrey: #8b949e;
     --grey: #30363d;
     --darkgrey: #161b22;
+    --darkergrey: #0d1117;
     --black: #080b0f;
     --blue: #58a6ff;
-    --menudarkgrey: #0d1117;
-
 }
 
 
@@ -118,7 +117,7 @@ body::before {
 
     display: flex; /* for better 1D display */
     flex-wrap: wrap; /* wraps the element if it takes too much space */
-    gap: 8px; /* Gap between menu elements
+    gap: 8px; /* Gap between menu elements */
 
     /* Initial view */
 
@@ -135,7 +134,7 @@ body::before {
     padding: 10px 18px; /* Top Right only */
 
     border: 2px solid var(--grey);
-    background: var(--menudarkgrey);
+    background: var(--darkergrey);
 
     color: var(--lightgrey);
 
@@ -157,18 +156,17 @@ body::before {
 
 /* Selected Menu Tab change */
 .menu-tab.active {
-    color: var(--menudarkgrey);
+    color: var(--darkergrey);
     background: var(--blue);
-    border-color: var(--blue);
 }
 
 
-/* Sections (responsible for separation of menus) */
+/* Sections (responsible for separation of menus/body elements) */
 
 .section {
     display: none; /* Set original display to off to not show */
 
-    margin-top: 20px; /* Spacing to menu */
+    margin-top: 20px; /* Spacing to menu select */
     padding: 30px;
 
     border: 2px solid var(--grey);
@@ -182,28 +180,28 @@ body::before {
     display: block; /* Sets the display visible */
 }
 
-.section h2 {
-    margin-bottom: 20px;
 
-    color: var(--blue);
+.section h2 {
+    margin-bottom: 20px; /*For spacing between subtitles and text */
+
+    color: var(--blue); /* override color */
     font-size: 1.5rem;
 
-    border-bottom: 2px dashed var(--grey);
+    border-bottom: 2px solid var(--grey);
     padding-bottom: 10px;
 }
 
 
-/* =========================
-   ABOUT
-   ========================= */
+/* About page */
 
 .about-grid {
     display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 25px;
+    grid-template-columns: 150px 1fr; /* fr takes the remaining spots available */
+    gap: 25px; /* gap between rows and columns */
     align-items: center;
 }
 
+/* The / in the box TO CHANGE*/
 .pixel-avatar {
     width: 150px;
     height: 150px;
@@ -212,18 +210,17 @@ body::before {
     background: #0d1117; /*TO SAVE AS VARIABLE */
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* aligns to center vertically */
+    justify-content: center; /* aligns to center horizontally */
 
+    /* override text styling from body */
     color: var(--blue);
     font-size: 2rem;
     font-weight: bold;
 }
 
 
-/* =========================
-   SKILLS
-   ========================= */
+/* Skills tab */
 
 .skills {
     display: flex;
@@ -232,11 +229,14 @@ body::before {
 }
 
 .skill {
+    display: grid; /* IMPORTANT GRID TEMPLATE */
     border: 2px solid var(--grey);
     padding: 8px 14px;
+    font: inherit;
     background: #0d1117; /*TO SAVE AS VARIABLE */
-
     color: var(--white);
+
+    transition: 0.15s;
 }
 
 .skill:hover {
@@ -244,10 +244,34 @@ body::before {
     color: var(--blue);
 }
 
+.skill.active {
+    color: var(--darkergrey);
+    background: var(--blue);
+}
 
-/* =========================
-   PROJECTS
-   ========================= */
+.skill-box {
+    display: none;
+
+    border: 2px solid var(--grey);
+    margin-top: 20px;
+    padding: 8px 14px;
+    background: var(--darkergrey);
+    color: var(--white);
+    box-shadow: 2px 0 var(--black);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    justify-content: center;
+
+
+    /*transition: 0.15s;                          IMPORTANT: CHECK TRANSITION TIME*/
+}
+
+.skill-box.active{
+    display: grid;
+}
+
+
+/* Projects tab */
 
 .projects {
     display: grid;

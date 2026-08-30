@@ -1,78 +1,9 @@
-function createShader(gl, type, source){
-    var shader = gl.createShader(type);
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-    var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
-    if(success){
-        return shader;
-    }
-
-    console.log(gl.getShaderInfoLog(shader));
-    gl.deleteShader(shader); // Failsafe + memory management
+async function loadShader(url){
+    const response = await fetch(url);
+    return response.text();
 }
 
-//Now we need to link the 2 shaders in 1 program
-function createProgram(gl, vertexShader, fragmentShader){
-    var program = gl.createProgram();
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-    var success = gl.getProgramParameter(program, gl.LINK_STATUS);
-    if(success){
-        return program;
-    }
-
-    console.log(gl.getProgramInfoLog(program));
-    gl.deleteProgram(program);
-}
-
-//For resizing the gl Canvas to the Display Size
-function resizeCanvasToDisplaySize(canvas){
-
-    const displayWidth = canvas.clientWidth;
-    const displayHeight = canvas.clientHeight;
-
-    //Check if resize is necessary
-    const needResize = displayWidth !== canvas.width || displayHeight !== canvas.height;
-
-
-    //Resize by setting canvas size to the display
-    if(needResize){
-        canvas.width = displayWidth;
-        canvas.height = displayHeight;
-    }
-
-    return needResize
-}
-
-function showSection(sectionId, button) {
-
-    // Hide every section
-    const sections = document.querySelectorAll(".section");
-
-    sections.forEach(section => {
-        section.classList.remove("active");
-    });
-
-
-    // Remove active state from every button
-    const buttons = document.querySelectorAll(".menu-tab");
-
-    buttons.forEach(tab => {
-        tab.classList.remove("active");
-    });
-
-
-    // Show selected section
-    document.getElementById(sectionId).classList.add("active");
-
-
-    // Highlight selected button
-    button.classList.add("active");
-}
-
-
-function main() {
+async function main() {
 
     const startTime = performance.now();
 
@@ -85,9 +16,13 @@ function main() {
         console.log("No webgl for you!");
     }
 
+
+
 //Get the GLSL code from script in html
-    var vertexShaderSource = document.querySelector("#vertex-shader-2d").text;
-    var fragmentShaderSource = document.querySelector("#fragment-shader-2d").text;
+    var vertexShaderSource = await loadShader("/shader/vertex.glsl");
+    var fragmentShaderSource = await loadShader("/shader/fragment.glsl");
+    console.log("VERTEX:", vertexShaderSource);
+    console.log("FRAGMENT:", fragmentShaderSource);
 
 //Create the 2 shaders
     var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
@@ -191,6 +126,54 @@ function main() {
     render();
 }
 
+
+function createShader(gl, type, source){
+    var shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+    if(success){
+        return shader;
+    }
+
+    console.log(gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader); // Failsafe + memory management
+}
+
+//Now we need to link the 2 shaders in 1 program
+function createProgram(gl, vertexShader, fragmentShader){
+    var program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+    if(success){
+        return program;
+    }
+
+    console.log(gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
+}
+
+//For resizing the gl Canvas to the Display Size
+function resizeCanvasToDisplaySize(canvas){
+
+    const displayWidth = canvas.clientWidth;
+    const displayHeight = canvas.clientHeight;
+
+    //Check if resize is necessary
+    const needResize = displayWidth !== canvas.width || displayHeight !== canvas.height;
+
+
+    //Resize by setting canvas size to the display
+    if(needResize){
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+    }
+
+    return needResize
+}
+
 function setRectangle(gl, x, y, width, height){
     const x1 = x;
     const x2 = x + width;
@@ -198,10 +181,6 @@ function setRectangle(gl, x, y, width, height){
     const y2 = y + height;
 
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([x1, y1, x2, y2, x2, y1, x1, y1, x1, y2, x2, y2]), gl.STATIC_DRAW)
-}
-
-function setTriangle(gl, x1, y1, x2, y2, x3, y3){
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([x1, y1, x2, y2, x3, y3]), gl.STATIC_DRAW);
 }
 
 
