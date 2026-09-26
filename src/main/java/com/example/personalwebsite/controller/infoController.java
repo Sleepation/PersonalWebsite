@@ -1,9 +1,12 @@
 package com.example.personalwebsite.controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 
 @org.springframework.web.bind.annotation.RestController
@@ -32,4 +35,7 @@ public class infoController {
 ////    private String fileToString(String ){
 ////
 ////    }
+
+
+
 }

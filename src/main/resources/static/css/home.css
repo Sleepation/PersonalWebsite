@@ -164,7 +164,7 @@ body::before {
 /* Sections (responsible for separation of menus/body elements) */
 
 .section {
-    display: none; /* Set original display to off to not show */
+    display: block; /* Set original display to off to not show */
 
     margin-top: 20px; /* Spacing to menu select */
     padding: 30px;
@@ -174,10 +174,6 @@ body::before {
 
     box-shadow:
             6px 6px 0 var(--black);
-}
-
-.section.active {
-    display: block; /* Sets the display visible */
 }
 
 
