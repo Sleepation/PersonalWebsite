@@ -282,6 +282,8 @@ body::before {
     background: #0d1117;
 
     box-shadow: 4px 4px 0 var(--black);
+
+    overflow-wrap: break-word;
 }
 
 .project:hover {
