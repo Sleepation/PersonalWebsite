@@ -1,17 +1,27 @@
 package com.example.personalwebsite.controller;
 
-import org.springframework.ui.Model;
+import com.example.personalwebsite.model.GithubRepository;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 
-import java.nio.charset.StandardCharsets;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
+@RestController
+public class InfoController {
 
-public class infoController {
+    private final RestClient restClient = RestClient.create();
+
+    @GetMapping("/api/projects")
+    public List<GithubRepository> getGitProjectsList(){
+
+        //ParameterizedTypeReference so that Jackson knows what to retrieve for the object (Contains nothing at first)
+        List<GithubRepository> repos = restClient.get().uri("https://api.github.com/users/Sleepation/repos").retrieve().body(new ParameterizedTypeReference<List<GithubRepository>>(){});
+
+        return repos;
+    }
+
 //    @GetMapping("/shader/vertex")
 //    public String getVectorShader(){
 //        try {

@@ -25,7 +25,7 @@ function showSection(sectionClassName, sectionId, button) {
 }
 
 
-function showSkill(sectionId, button) {
+function showSkill(sectionClassName, sectionId, button) {
 
     // Hide every skillBoxes
     const skillBoxes = document.querySelectorAll(".skill-box");
