@@ -108,6 +108,7 @@ async function main() {
         setRectangle(gl, 0, 0, canvas.width, canvas.height);
         gl.uniform1f(timeUniformLocation, (performance.now() - startTime)/1000);
 
+        //DEBUG
         // console.log("position:", positionAttributeLocation);
         // console.log("time:", timeUniformLocation);
 

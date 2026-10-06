@@ -13,7 +13,7 @@ async function main(){
         article.classList.add("project");
 
         // const url = document.createElement("li")
-        const readmeContent = atob(readMesGitHub[index].content);
+        const readmeContent = atob(readMesGitHub[index].content).substring(0, 200) + " ...";
         // console.log(readmeContent)
         article.innerHTML = `
             <h3>${project.name}</h3>
