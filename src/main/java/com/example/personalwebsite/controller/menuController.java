@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class menuController {
     @GetMapping("/")
     public String mainMenu(){
-        return "redirect:/html/home.html";
+        return "redirect:/html/about.html";
     }
 
     @GetMapping("/about")
