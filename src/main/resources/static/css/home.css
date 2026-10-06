@@ -266,6 +266,11 @@ body::before {
     display: grid;
 }
 
+.skill-image{
+    height:300px;
+    width: auto;
+}
+
 
 /* Projects tab */
 
