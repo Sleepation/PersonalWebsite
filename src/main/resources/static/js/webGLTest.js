@@ -108,8 +108,8 @@ async function main() {
         setRectangle(gl, 0, 0, canvas.width, canvas.height);
         gl.uniform1f(timeUniformLocation, (performance.now() - startTime)/1000);
 
-        console.log("position:", positionAttributeLocation);
-        console.log("time:", timeUniformLocation);
+        // console.log("position:", positionAttributeLocation);
+        // console.log("time:", timeUniformLocation);
 
         //Execution
         var primitiveType = gl.TRIANGLES; // Will draw a triangle every 3 times

@@ -1,17 +1,23 @@
 async function main(){
-    const response = await fetch("/api/projects");
-    const projectsGitHub = await response.json();
+    const response1 = await fetch("/api/repos");
+    const projectsGitHub = await response1.json();
+
+    const response2 = await fetch("/api/repos/readme");
+    const readMesGitHub = await response2.json();
+
 
     const projectsContainer = await document.querySelector(".projects");
 
-    projectsGitHub.forEach(project =>{
+    projectsGitHub.forEach((project, index) =>{
         const article = document.createElement("article");
         article.classList.add("project");
 
         // const url = document.createElement("li")
+        const readmeContent = atob(readMesGitHub[index].content);
+        // console.log(readmeContent)
         article.innerHTML = `
             <h3>${project.name}</h3>
-            <p>${project.description}</p>
+            <p>${readmeContent}</p>
             <a href="${project.html_url}" target = "_blank">${project.html_url}</a>
         `;
 
