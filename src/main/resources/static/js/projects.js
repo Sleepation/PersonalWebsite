@@ -1,12 +1,23 @@
 async function main(){
+
+    const projectsContainer = await document.querySelector(".projects");
+    const loadingArticle = document.createElement("article");
+
+    loadingArticle.innerHTML = `
+    <img src="/img/loadingGIF.gif" alt="Loading animation" class="loading">
+`;
+
+    projectsContainer.appendChild(loadingArticle);
+
+
+
     const response1 = await fetch("/api/repos");
     const projectsGitHub = await response1.json();
 
     const response2 = await fetch("/api/repos/readme");
     const readMesGitHub = await response2.json();
 
-
-    const projectsContainer = await document.querySelector(".projects");
+    loadingArticle.remove();
 
     projectsGitHub.forEach((project, index) =>{
         const article = document.createElement("article");

@@ -304,6 +304,8 @@ body::before {
     overflow-wrap: break-word;
 }
 
+
+
 .project:hover {
     border-color: var(--blue);
     transform: translate(-2px, -2px);
@@ -316,6 +318,15 @@ body::before {
 
 .project p {
     color: var(--lightgrey);
+}
+
+.loading{
+    padding: 20px;
+
+    height: 100px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 
